@@ -1,7 +1,5 @@
 import json
 import os
-from pathlib import Path
-from configparser import ConfigParser
 
 
 class ConfidenceScore:
