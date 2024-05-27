@@ -26,12 +26,12 @@ class WhisperX:
         import torch
         import whisperx
 
-        self.audio_file = audio_file
+        self.audio_file = str(audio_file)
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.batch_size = 16  #reduce if low on GPU memory
-        compute_type = "float16" if torch.cuda.is_available() else "float32whisper"
-        self.model = whisperx.load_model("large-v2", self.device, compute_type=compute_type, language=LANGUAGE_CODE)
+        compute_type = "float16" if torch.cuda.is_available() else "float32"
+        self.model = whisperx.load_model("large-v3", self.device, compute_type=compute_type, language=LANGUAGE_CODE)
         self.model_a, self.metadata = whisperx.load_align_model(language_code=LANGUAGE_CODE, device=self.device)
         self.writer_options = {
             "max_line_width": None,  # Adjust these options based on your needs and the writers' requirements
